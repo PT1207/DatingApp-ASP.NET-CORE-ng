@@ -1,19 +1,33 @@
 <div class="container mt-5">
-    <div *ngIf="!registerMode" style="text-align:  center;">
+    <div *ngIf="!registerMode" style='text-align: center;'>
         <h1>Find your match</h1>
-        <p class="lead">Come on in to view your matches.... all you need to do is to sign up</p>
+        <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
         <div class="text-center">
             <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-            <button class="btn btn-info btn-lg">Learn more</button>
-
+            <button (click)="learnMoreToggle()" class="btn btn-info btn-lg">Learn more</button>
         </div>
     </div>
 
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <app-register  (cancelRegister)="cancelRegisterMode($event)"></app-register> 
+                <app-register (cancelRegister)="cancelRegisterMode($event)" ></app-register>
             </div>
         </div>
+    </div>
+</div>
+
+
+<div *ngIf="learnMore && !registerMode" class="container mt-3" style="text-align: center;">
+    <div>
+        <p class="lead"><b>DatingApp</b> is a dating-focused social network created by Petru Tagarcea,
+                        completing Neil's Cummings ASP.NET 5 plus ng course on Udemy.
+                        In a society that profits on our self-doubt, DatingApp is the place where it pays to be the real,
+                         unapologetic you. We fight the ambiguity of modern dating with authentic, 
+                         unfiltered conversation.
+                         We believe real connection is born from being honest in who you are and what you really want.
+                         <b>Register</b> within seconds and find your match today ! 
+
+        </p>
     </div>
 </div>
