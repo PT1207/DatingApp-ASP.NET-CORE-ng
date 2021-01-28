@@ -1,13 +1,16 @@
-<div class="container mt-5">
+<div *ngIf="!(accountService.currentUser$ | async)" class="container mt-5">
     <div *ngIf="!registerMode" style='text-align: center;'>
         <h1>Find your match</h1>
         <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
         <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
+            <button (click)="registerToggle()" *ngIf="!(accountService.currentUser$ | async)" class="btn btn-primary btn-lg mr-2">Register</button>
             <button (click)="learnMoreToggle()" class="btn btn-info btn-lg">Learn more</button>
         </div>
     </div>
 
+
+
+    <!-- Register Button -->
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
@@ -17,8 +20,8 @@
     </div>
 </div>
 
-
-<div *ngIf="learnMore && !registerMode" class="container mt-3" style="text-align: center;">
+<!-- LearnMore Button -->
+<div *ngIf="learnMore" class="container mt-3" style="text-align: center;">
     <div>
         <p class="lead"><b>DatingApp</b> is a dating-focused social network created by Petru Tagarcea,
                         completing Neil's Cummings ASP.NET 5 plus ng course on Udemy.
@@ -31,3 +34,27 @@
         </p>
     </div>
 </div>
+
+
+<!--Once logged in : -->
+<div *ngIf="accountService.currentUser$ | async" class="container mt-3">
+    <h1 class="formatted-text" style="text-align: center;">DatingApp Comunity Guidelines</h1>
+<ul class="mt-3">
+    <li><h5>Keep it real</h5></li>
+    <li><h5>Keep it kind</h5></li>
+    <li><h5>Keep it safe</h5></li>
+    <li><h5>Photo guidelines:</h5>
+
+                <p>Photos that clearly represent who you are make for a great profile. Please make sure when uploading pictures they do not:
+                    <ul>
+                   <li> Feature anyone under the age of 18</li>
+                   <li>Obscure your face</li>
+                    <li>Have watermarks, logos, overlaying text or heavy editing</li>
+                    <li>Contain pornography or explicit content</li>
+                    <li>Use people or celebrities who aren’t you (unless you really are Shakira)</li>
+                    <li><p>Show any illegal content, violent or offensive material</p></li>
+                </ul>
+        </li>
+</ul>
+<p class="bold"> </p>
+
