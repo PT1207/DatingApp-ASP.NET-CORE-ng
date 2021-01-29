@@ -8,8 +8,8 @@ import { environment } from '../../../environments/environment.prod';
   styleUrls: ['./test-errors.component.css']
 })
 export class TestErrorsComponent implements OnInit {
-  baseUrl = environment.apiUrl;
-  validationErrors: string[] = [];
+     baseUrl = environment.apiUrl;
+    validationErrors: string[] = [];
 
   constructor(private http: HttpClient) { }
 
